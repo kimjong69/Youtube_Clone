@@ -28,11 +28,13 @@ class Posts extends StatelessWidget {
               },
             ),
           ),
-           Padding(
+          Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
               style: const TextStyle(fontSize: 20),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],

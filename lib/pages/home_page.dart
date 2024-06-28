@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Future getData() async {
     // final userId = supabase.auth.currentUser!.id;
     final data = await supabase.from('profiles').select();
-    print(data[0]['id']);
+    // print(data[0]['id']);
     return data.toString();
   }
 
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
               return const Center(child: CircularProgressIndicator());
             }
             final items = snapshot.data!;
-            print(items);
+            // print(items);
             return ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (_, index) {
@@ -86,9 +86,18 @@ class _HomePageState extends State<HomePage> {
                             arguments: items[index]['video_url']);
                       });
                     },
-                    child: Posts(
-                        thumnailUrl: items[index]['thumbnail_url'],
-                        title: items[index]['title']),
+                    child: Column(
+                      children: [
+                        Card(
+                          child: Posts(
+                              thumnailUrl: items[index]['thumbnail_url'],
+                              title: items[index]['title']),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
                   );
                 });
           }),

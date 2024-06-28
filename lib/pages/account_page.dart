@@ -51,7 +51,7 @@ class _AccountPageState extends State<AccountPage> {
         await supabase.from('profiles').select().eq('id', userId).single();
     setState(() {
       _usernameController.text = data['username'];
-      print(data['username']);
+      // print(data['username']);
       _fullNameController.text = data['full_name'];
       _imgUrl = data['avatar_url'];
     });
